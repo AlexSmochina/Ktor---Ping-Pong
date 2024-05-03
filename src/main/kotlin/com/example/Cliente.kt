@@ -16,12 +16,12 @@ suspend fun main() {
     val scan = Scanner(System.`in`)
 
     print("Escribe el mensaje: ")
-    val message = Mensaje(scan.nextLine()).toString()
+    val message = Mensaje(scan.nextLine())
 
     var response: HttpResponse = client.post("http://127.0.0.1:8080/mensaje") {
         url("http://127.0.0.1:8080/mensaje")
         contentType(ContentType.Application.Json)
-        setBody(Json.encodeToString(Mensaje(message)))
+        setBody(Json.encodeToString(message))
     }
     println("Status després del POST: ${response.status}")
 
